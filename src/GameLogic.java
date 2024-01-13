@@ -210,8 +210,6 @@ public class GameLogic implements PlayableLogic {
         player1Pieces();
         player2Pieces();
         isPlayar1turn = false;
-
-
     }
 
     @Override
