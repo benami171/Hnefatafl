@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class GameLogic implements PlayableLogic {
     // COMMIT TEST
 
     private ConcretePiece[][] board;
-    private final int boardSize = 11;
+    private final int BOARD_SIZE = 11;
     private ConcretePlayer player1;
     private ConcretePlayer player2;
     private ConcretePlayer currPlayer;
@@ -16,7 +15,7 @@ public class GameLogic implements PlayableLogic {
 
     public GameLogic() {
         isPlayar1turn = false;
-        board = new ConcretePiece[11][11];
+        board = new ConcretePiece[BOARD_SIZE][BOARD_SIZE];
         ConcretePieceArr = new ConcretePiece[37];
         player1 = new ConcretePlayer(true);
         player2 = new ConcretePlayer(false);
@@ -33,7 +32,6 @@ public class GameLogic implements PlayableLogic {
         }
         board[3][5] = ConcretePieceArr[0];
         ConcretePieceArr[0].addMove(new Position(5, 3));
-        System.out.println("Pawn number " + board[3][5].getNumber() + " created");
         board[4][4] = ConcretePieceArr[1];
         ConcretePieceArr[1].addMove(new Position(4, 4));
         board[4][5] = ConcretePieceArr[2];
@@ -58,7 +56,6 @@ public class GameLogic implements PlayableLogic {
         ConcretePieceArr[11].addMove(new Position(6, 6));
         board[7][5] = ConcretePieceArr[12];
         ConcretePieceArr[12].addMove(new Position(5, 7));
-        System.out.println("Pawn number " + board[7][5].getNumber() + " created");
     }
 
     private void player2Pieces() {
@@ -67,7 +64,6 @@ public class GameLogic implements PlayableLogic {
         }
         board[0][3] = ConcretePieceArr[13];
         ConcretePieceArr[13].addMove(new Position(3, 0));
-        System.out.println("Pawn number " + board[0][3].getNumber() + " created");
         board[0][4] = ConcretePieceArr[14];
         ConcretePieceArr[14].addMove(new Position(4, 0));
         board[0][5] = ConcretePieceArr[15];
@@ -114,7 +110,6 @@ public class GameLogic implements PlayableLogic {
         ConcretePieceArr[35].addMove(new Position(6, 10));
         board[10][7] = ConcretePieceArr[36];
         ConcretePieceArr[36].addMove(new Position(7, 10));
-        System.out.println("Pawn number " + board[10][7].getNumber() + " created");
     }
 
     @Override
@@ -176,6 +171,10 @@ public class GameLogic implements PlayableLogic {
 
     @Override
     public boolean isGameFinished() {
+        return isDefendersWon()||isAttackersWon();
+    }
+
+    public boolean isDefendersWon(){
         ConcretePiece corner1 = board[0][0];
         ConcretePiece corner2 = board[0][10];
         ConcretePiece corner3 = board[10][0];
@@ -199,6 +198,10 @@ public class GameLogic implements PlayableLogic {
         return false;
     }
 
+    public boolean isAttackersWon(){
+        return false;
+    }
+
     @Override
     public boolean isSecondPlayerTurn() {
         return !isPlayar1turn;
@@ -206,10 +209,12 @@ public class GameLogic implements PlayableLogic {
 
     @Override
     public void reset() {
-        board = new ConcretePiece[boardSize][boardSize];
+        board = new ConcretePiece[BOARD_SIZE][BOARD_SIZE];
         player1Pieces();
         player2Pieces();
         isPlayar1turn = false;
+        player1.resetWins();
+        player2.resetWins();
     }
 
     @Override
@@ -217,8 +222,7 @@ public class GameLogic implements PlayableLogic {
     }
 
     @Override
-    public int getBoardSize() {
-
-        return boardSize;
+    public int getBOARD_SIZE() {
+        return BOARD_SIZE;
     }
 }

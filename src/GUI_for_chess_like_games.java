@@ -25,7 +25,7 @@ public class GUI_for_chess_like_games extends JFrame {
      */
     public GUI_for_chess_like_games(PlayableLogic gameLogic, String title) {
         this.gameLogic = gameLogic;
-        this.BOARD_SIZE = gameLogic.getBoardSize();
+        this.BOARD_SIZE = gameLogic.getBOARD_SIZE();
         setTitle(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Create a panel for the top section
