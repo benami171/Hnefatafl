@@ -6,10 +6,8 @@ public class Main {
     /**
      * The Main function to start the game.
      * Don't make any changes here
-     *
      * @param args
      */
-
     public static void main(String[] args) {
         PlayableLogic gameLogic = new GameLogic();
         GUI_for_chess_like_games gui = new GUI_for_chess_like_games(gameLogic, "Vikings Chess Game");

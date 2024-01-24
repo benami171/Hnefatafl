@@ -67,5 +67,5 @@ public interface PlayableLogic {
      *
      * @return The size of the game board, typically as the number of rows or columns.
      */
-    int getBOARD_SIZE();
+    int getBoardSize();
 }

@@ -54,7 +54,7 @@ class GameLogicTest {
             System.setOut(new PrintStream(outputStream));
 
             // Create an instance of your game logic
-            PlayableLogic gameLogic = (PlayableLogic) new GameLogic();
+            PlayableLogic gameLogic = new GameLogic();
 
             // Read input file and process it
             String inputContent = readFile(inputFile);
@@ -104,7 +104,7 @@ class GameLogicTest {
         while (matcher.find()) {
             int x = Integer.parseInt(matcher.group(1));
             int y = Integer.parseInt(matcher.group(2));
-            positions.add(new Position(x,y));
+            positions.add(new Position(x, y));
         }
 
         return positions;

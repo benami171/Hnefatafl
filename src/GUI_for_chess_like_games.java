@@ -25,7 +25,7 @@ public class GUI_for_chess_like_games extends JFrame {
      */
     public GUI_for_chess_like_games(PlayableLogic gameLogic, String title) {
         this.gameLogic = gameLogic;
-        this.BOARD_SIZE = gameLogic.getBOARD_SIZE();
+        this.BOARD_SIZE = gameLogic.getBoardSize();
         setTitle(title);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Create a panel for the top section
@@ -101,7 +101,6 @@ public class GUI_for_chess_like_games extends JFrame {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 Piece piece = gameLogic.getPieceAtPosition(new Position(row, col));
-
                 if (piece != null) {
                     // Update the button's appearance based on the new piece position
                     String type = piece.getType();
